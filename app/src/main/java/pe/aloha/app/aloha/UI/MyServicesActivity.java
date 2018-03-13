@@ -1,15 +1,17 @@
 package pe.aloha.app.aloha.UI;
 
-import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
+
 import java.util.ArrayList;
+
 import pe.aloha.app.aloha.Core.Persist;
 import pe.aloha.app.aloha.Core.Utils;
 import pe.aloha.app.aloha.Core.model.QuotationResponse;
@@ -20,9 +22,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ListServicesActivity extends AppCompatActivity {
+public class MyServicesActivity extends AppCompatActivity {
 
-    static ListServicesActivity listServicesActivity;
+    static MyServicesActivity myServicesActivity;
 
     Toolbar toolbar;
     FrameLayout frameLayout;
@@ -33,7 +35,7 @@ public class ListServicesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_services);
+        setContentView(R.layout.activity_my_services);
 
         initCast();
 
@@ -41,7 +43,6 @@ public class ListServicesActivity extends AppCompatActivity {
     }
 
     private void initCast() {
-        listServicesActivity = this;
         toolbar = findViewById(R.id.toolbar);
         frameLayout = findViewById(R.id.services_list_placeholder);
         fragmentManager = getSupportFragmentManager();
@@ -52,18 +53,18 @@ public class ListServicesActivity extends AppCompatActivity {
     }
 
     private void onInit() {
-        String trucks_ids = Persist.Get("truck_type_ids", listServicesActivity);
+        String driver_id = Persist.Get("token", getApplicationContext());
 
-        if (!trucks_ids.equals("")) {
-            Call<ArrayList<QuotationResponse>> filteredQuotations = ApiService.getApiService().getFilteredQuotations(trucks_ids);
-            filteredQuotations.enqueue(new Callback<ArrayList<QuotationResponse>>() {
+        if (!driver_id.equals("")) {
+            Call<ArrayList<QuotationResponse>> myQuotations = ApiService.getApiService().getMyQuotations(driver_id);
+            myQuotations.enqueue(new Callback<ArrayList<QuotationResponse>>() {
                 @Override
                 public void onResponse(Call<ArrayList<QuotationResponse>> call, Response<ArrayList<QuotationResponse>> response) {
                     if (response.isSuccessful()) {
                         ArrayList<QuotationResponse> quotations = response.body();
                         onSuccessGetFilteredQuotations(quotations);
                     } else {
-                        Utils.createToast(listServicesActivity, R.string.something_wrong);
+                        Utils.createToast(getApplicationContext(), R.string.something_wrong);
                     }
                 }
 

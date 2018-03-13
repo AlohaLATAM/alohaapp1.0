@@ -25,7 +25,8 @@
         <activity android:name=".UI.SignUpActivity" />
         <activity android:name=".UI.ForgotPasswordActivity" />
         <activity android:name=".UI.HelpActivity" />
-        <activity android:name=".UI.QuotationActivity"></activity>
+        <activity android:name=".UI.QuotationActivity" />
+        <activity android:name=".UI.MyServicesActivity"></activity>
     </application>
 
 </manifest>

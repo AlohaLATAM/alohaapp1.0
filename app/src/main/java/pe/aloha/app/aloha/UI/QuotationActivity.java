@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,9 +14,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
@@ -113,9 +109,6 @@ public class QuotationActivity extends AppCompatActivity {
             accept_service.setVisibility(View.VISIBLE);
         }
 
-        Toast.makeText(quotationActivity, "Size is:" + quotation.toString(), Toast.LENGTH_LONG).show();
-        Log.e("Response", new Gson().toJson(quotation));
-
         onSuccessGetInventory(quotation.getInventory());
     }
 
@@ -147,9 +140,9 @@ public class QuotationActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<QuotationResponse> call, Response<QuotationResponse> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(quotationActivity, "Se te asignó este servicio", Toast.LENGTH_SHORT).show();
+                    Utils.createToast(getApplicationContext(), R.string.assigned_service);
                 } else {
-                    Toast.makeText(quotationActivity, "Ocurrió un problema", Toast.LENGTH_SHORT).show();
+                    Utils.createToast(getApplicationContext(), R.string.something_wrong);
                 }
             }
 
@@ -169,17 +162,18 @@ public class QuotationActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_item_home:
-                Utils.changeActivity(quotationActivity, ListServicesActivity.class);
+                Utils.changeActivity(getApplicationContext(), ListServicesActivity.class);
                 return true;
             case R.id.menu_item_my_services:
+                Utils.changeActivity(getApplicationContext(), MyServicesActivity.class);
                 return true;
             case R.id.menu_item_profile:
                 return true;
             case R.id.menu_item_help:
                 return true;
             case R.id.menu_item_logout:
-                Persist.Clear(quotationActivity);
-                Utils.changeActivity(quotationActivity, MainActivity.class);
+                Persist.Clear(getApplicationContext());
+                Utils.changeActivity(getApplicationContext(), MainActivity.class);
 
                 return true;
             default:

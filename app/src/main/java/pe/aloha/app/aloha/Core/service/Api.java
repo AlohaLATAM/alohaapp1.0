@@ -43,4 +43,8 @@ public interface Api {
     @PUT("api/quotations/{quotation_id}/")
     Call<QuotationResponse> asignDriver(@Path("quotation_id") String quotation_id,
                                         @Body AssignUserRequest driver_token);
+
+    @Headers("Content-Type: application/json")
+    @GET("/api/quotations/")
+    Call<ArrayList<QuotationResponse>> getMyQuotations(@Query("driver_id") String driver_id);
 }
