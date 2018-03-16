@@ -22,6 +22,14 @@
     <string name="menu_logout">Salir</string>
     <string name="something_wrong">Error: Ocurrió un problema, intenta comunicarte con nosotros.</string>
     <string name="assigned_service">Se te asignó este servicio.</string>
+    <string name="empty_list">No se encontraron servicios.</string>
+    <string name="loading">Actualizando ..</string>
+    <string name="support_title">CENTRO DE AYUDA</string>
+    <string name="support_welcome">Aloha querido usuario.</string>
+    <string name="support_description_1">En Aloha queremos que tu experiencia sea la más placentera, es por eso que estamos abiertos a escuchar todo tipo de sugerencias, dudas o problemas que puedas encontrar.</string>
+    <string name="support_description_2">Debajo encontrarás los medios por el cuál podrás comunicarte con nosotros, recuerda que es posible que te solicitemos tu número de DNI para poder saber con quién estamos hablando y poder darte una ayuda más personalizada.</string>
+    <string name="support_call">Llamar</string>
+    <string name="support_whatsapp">Whatsapp</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

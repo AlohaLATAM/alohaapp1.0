@@ -26,7 +26,8 @@
         <activity android:name=".UI.ForgotPasswordActivity" />
         <activity android:name=".UI.HelpActivity" />
         <activity android:name=".UI.QuotationActivity" />
-        <activity android:name=".UI.MyServicesActivity"></activity>
+        <activity android:name=".UI.MyServicesActivity" />
+        <activity android:name=".UI.SupportActivity"></activity>
     </application>
 
 </manifest>

@@ -8,7 +8,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 import pe.aloha.app.aloha.Core.Persist;
 import pe.aloha.app.aloha.Core.Utils;
@@ -29,6 +32,8 @@ public class ListServicesActivity extends AppCompatActivity {
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
     ServicesListFragment servicesListFragment;
+    TextView empty_list;
+    TextView loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,22 +41,23 @@ public class ListServicesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_services);
 
         initCast();
-
         onInit();
     }
 
     private void initCast() {
         listServicesActivity = this;
         toolbar = findViewById(R.id.toolbar);
+        empty_list = findViewById(R.id.empty_list);
+        loading = findViewById(R.id.loading);
         frameLayout = findViewById(R.id.services_list_placeholder);
-        fragmentManager = getSupportFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
-        servicesListFragment = new ServicesListFragment();
 
         setSupportActionBar(toolbar);
     }
 
     private void onInit() {
+        frameLayout.setVisibility(View.GONE);
+        empty_list.setVisibility(View.GONE);
+        loading.setVisibility(View.VISIBLE);
         String trucks_ids = Persist.Get("truck_type_ids", listServicesActivity);
 
         if (!trucks_ids.equals("")) {
@@ -73,13 +79,34 @@ public class ListServicesActivity extends AppCompatActivity {
         }
     }
 
+    public void onRefreshServices(View view) {
+        onInit();
+    }
+
     private void onSuccessGetFilteredQuotations(ArrayList<QuotationResponse> quotations) {
+        loading.setVisibility(View.GONE);
+        if (quotations.size() == 0) {
+            empty_list.setVisibility(View.VISIBLE);
+        } else {
+            frameLayout.setVisibility(View.VISIBLE);
+            empty_list.setVisibility(View.GONE);
+
+            openFragment(quotations);
+        }
+    }
+
+    private void openFragment(ArrayList<QuotationResponse> quotations) {
+        fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        servicesListFragment = new ServicesListFragment();
+
         Bundle bundle = new Bundle();
 
         bundle.putParcelableArrayList("list_quotations", quotations);
         servicesListFragment.setArguments(bundle);
 
-        fragmentTransaction.add(R.id.services_list_placeholder, servicesListFragment, "services_list_fragment");
+        fragmentTransaction.replace(R.id.services_list_placeholder, servicesListFragment, "services_list_fragment");
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 
@@ -102,6 +129,7 @@ public class ListServicesActivity extends AppCompatActivity {
             case R.id.menu_item_profile:
                 return true;
             case R.id.menu_item_help:
+                Utils.changeActivity(getApplicationContext(), SupportActivity.class);
                 return true;
             case R.id.menu_item_logout:
                 Persist.Clear(getApplicationContext());

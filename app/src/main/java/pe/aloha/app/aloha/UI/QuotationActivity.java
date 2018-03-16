@@ -170,6 +170,7 @@ public class QuotationActivity extends AppCompatActivity {
             case R.id.menu_item_profile:
                 return true;
             case R.id.menu_item_help:
+                Utils.changeActivity(getApplicationContext(), SupportActivity.class);
                 return true;
             case R.id.menu_item_logout:
                 Persist.Clear(getApplicationContext());
