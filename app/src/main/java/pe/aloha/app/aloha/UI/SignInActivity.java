@@ -20,9 +20,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
-
-    public static MainActivity mainActivity;
+public class SignInActivity extends AppCompatActivity {
 
     EditText username;
     EditText password;
@@ -33,9 +31,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        mainActivity = this;
+        setContentView(R.layout.activity_sign_in);
 
         username = findViewById(R.id.signin_username);
         password = findViewById(R.id.signin_password);
@@ -44,16 +40,8 @@ public class MainActivity extends AppCompatActivity {
         help_link = findViewById(R.id.signin_helplink);
     }
 
-    public void goToSignUp(View view) {
-        Utils.changeActivity(mainActivity, SignUpActivity.class);
-    }
-
-    public void goToForgotPassword(View view) {
-        Utils.changeActivity(mainActivity, ForgotPasswordActivity.class);
-    }
-
     public void goToHelp(View view) {
-        Utils.changeActivity(mainActivity, HelpActivity.class);
+        Utils.changeActivity(getApplicationContext(), TemporalActivity.class);
     }
 
     public void SignIn(View view) {
@@ -67,12 +55,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(MainActivity.this, "Bienvenido", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_SHORT).show();
                     onSuccessfullSignIn(response.body().getToken());
                 } else if (response.code() == 401) {
-                    Toast.makeText(MainActivity.this, "Error: Los datos ingresados son incorrectos.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Error: Los datos ingresados son incorrectos.", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(MainActivity.this, "Error: Ocurrió un problema, intenta comunicarte con nosotros.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Error: Ocurrió un problema, intenta comunicarte con nosotros.", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -82,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void onSuccessfullSignIn(String token) {
-        Persist.Set("token", token, mainActivity);
+        Persist.Set("token", token, getApplicationContext());
 
         Call<List<DriverTruckResponse>> userTrucks = ApiService.getApiService().getUserTrucks(token);
         userTrucks.enqueue(new Callback<List<DriverTruckResponse>>() {
@@ -92,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                     List<DriverTruckResponse> trucks = response.body();
                     onSuccessfullGetUserTrucks(trucks);
                 } else {
-                    Toast.makeText(mainActivity, "Error: Ocurrió un problema, intenta comunicarte con nosotros.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Error: Ocurrió un problema, intenta comunicarte con nosotros.", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -112,9 +100,9 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        Persist.Set("truck_type_ids", trucks_ids, mainActivity);
+        Persist.Set("truck_type_ids", trucks_ids, getApplicationContext());
 
-        Utils.changeActivity(mainActivity, ListServicesActivity.class);
+        Utils.changeActivity(getApplicationContext(), ListServicesActivity.class);
     }
 
     @Override

@@ -22,7 +22,7 @@ public class SplahScreenActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if (Persist.Get("token", splahScreenActivity).matches("")) {
-                    Utils.changeActivity(splahScreenActivity, MainActivity.class);
+                    Utils.changeActivity(splahScreenActivity, SignInActivity.class);
                 } else {
                     Utils.createToast(splahScreenActivity, R.string.welcome);
                     Utils.changeActivity(splahScreenActivity, ListServicesActivity.class);

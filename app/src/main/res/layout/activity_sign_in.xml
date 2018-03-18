@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="pe.aloha.app.aloha.UI.MainActivity">
+    tools:context="pe.aloha.app.aloha.UI.SignInActivity">
 
     <ImageView
         android:id="@+id/signin_logo"
@@ -69,7 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:onClick="goToSignUp"
+                android:onClick="goToHelp"
                 android:paddingVertical="5dp"
                 android:text="@string/signup" />
 
@@ -78,7 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:onClick="goToForgotPassword"
+                android:onClick="goToHelp"
                 android:paddingVertical="5dp"
                 android:text="@string/lost_password" />
 

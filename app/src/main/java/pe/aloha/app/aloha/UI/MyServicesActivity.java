@@ -121,7 +121,7 @@ public class MyServicesActivity extends AppCompatActivity {
                 return true;
             case R.id.menu_item_logout:
                 Persist.Clear(getApplicationContext());
-                Utils.changeActivity(getApplicationContext(), MainActivity.class);
+                Utils.changeActivity(getApplicationContext(), SignInActivity.class);
 
                 return true;
             default:

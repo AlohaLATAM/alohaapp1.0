@@ -20,14 +20,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UI.MainActivity" />
+        <activity android:name=".UI.SignInActivity" />
         <activity android:name=".UI.ListServicesActivity" />
-        <activity android:name=".UI.SignUpActivity" />
-        <activity android:name=".UI.ForgotPasswordActivity" />
         <activity android:name=".UI.HelpActivity" />
         <activity android:name=".UI.QuotationActivity" />
         <activity android:name=".UI.MyServicesActivity" />
-        <activity android:name=".UI.SupportActivity"></activity>
+        <activity android:name=".UI.SupportActivity" />
+        <activity android:name=".UI.TemporalActivity"></activity>
     </application>
 
 </manifest>
