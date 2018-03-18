@@ -30,6 +30,7 @@
     <string name="support_description_2">Debajo encontrarás los medios por el cuál podrás comunicarte con nosotros, recuerda que es posible que te solicitemos tu número de DNI para poder saber con quién estamos hablando y poder darte una ayuda más personalizada.</string>
     <string name="support_call">Llamar</string>
     <string name="support_whatsapp">Whatsapp</string>
+    <string name="sign_in">Ingresar</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

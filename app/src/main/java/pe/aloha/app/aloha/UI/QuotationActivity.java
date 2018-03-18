@@ -59,9 +59,11 @@ public class QuotationActivity extends AppCompatActivity {
     }
 
     private void initCast() {
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         Intent intent = getIntent();
 
-        toolbar = findViewById(R.id.toolbar);
         quotationActivity = this;
         quotation_id = intent.getStringExtra("quotation_id");
         quotation_date = findViewById(R.id.quotation_date);
@@ -77,8 +79,6 @@ public class QuotationActivity extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         inventoryFragment = new InventoryFragment();
-
-        setSupportActionBar(toolbar);
     }
 
     private void getQuotation() {
