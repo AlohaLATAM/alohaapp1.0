@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import java.util.ArrayList;
 
+import pe.aloha.app.aloha.Core.Utils;
 import pe.aloha.app.aloha.Core.model.QuotationResponse;
 import pe.aloha.app.aloha.R;
 import pe.aloha.app.aloha.UI.QuotationActivity;
@@ -38,7 +39,7 @@ public class QuotationAdapter extends RecyclerView.Adapter<QuotationAdapter.MyVi
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         QuotationResponse quotation = quotations.get(position);
 
-        holder.date.setText(quotation.getDatetime_of_service());
+        holder.date.setText(Utils.convertDate(quotation.getDatetime_of_service()));
         holder.from.setText(quotation.getAddress_from());
         holder.to.setText(quotation.getAddress_to());
         holder.price.setText(quotation.getTotal_price());

@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,7 +16,12 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 
 import pe.aloha.app.aloha.Core.Persist;
 import pe.aloha.app.aloha.Core.Utils;
@@ -98,7 +104,7 @@ public class QuotationActivity extends AppCompatActivity {
     }
 
     private void onSuccessGetQuotation() {
-        quotation_date.setText(quotation.getDatetime_of_service());
+        quotation_date.setText(Utils.convertDate(quotation.getDatetime_of_service()));
         quotation_from.setText(quotation.getAddress_from());
         quotation_from_type_home.setText(quotation.getHome_type_from().getName() + " - Piso " + quotation.getFloor_from());
         quotation_to.setText(quotation.getAddress_to());
