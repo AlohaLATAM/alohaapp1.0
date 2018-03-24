@@ -67,6 +67,7 @@ public class QuotationActivity extends AppCompatActivity {
     private void initCast() {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         Intent intent = getIntent();
 

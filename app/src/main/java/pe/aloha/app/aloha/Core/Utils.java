@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
@@ -57,10 +58,13 @@ public class Utils {
     public static String convertDate(String myDate) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
         Date newDate = null;
+
+        Log.e("Here", myDate);
+
         try {
             newDate = format.parse(myDate);
         } catch (ParseException e) {
-            e.printStackTrace();
+            return "No hay fecha.";
         }
         format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date = format.format(newDate);
@@ -71,7 +75,7 @@ public class Utils {
         try {
             parsed = format .parse(date);
         } catch (ParseException e) {
-            e.printStackTrace();
+            return "No parseable.";
         }
 
         TimeZone tz = TimeZone.getTimeZone("America/Lima");

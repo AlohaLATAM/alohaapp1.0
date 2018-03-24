@@ -52,6 +52,7 @@ public class ListServicesActivity extends AppCompatActivity {
         frameLayout = findViewById(R.id.services_list_placeholder);
 
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
     private void onInit() {

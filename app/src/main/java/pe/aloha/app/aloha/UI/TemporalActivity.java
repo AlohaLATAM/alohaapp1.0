@@ -33,6 +33,7 @@ public class TemporalActivity extends AppCompatActivity {
     private void initCast() {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         frameLayout = findViewById(R.id.services_list_placeholder);
         fragmentManager = getSupportFragmentManager();

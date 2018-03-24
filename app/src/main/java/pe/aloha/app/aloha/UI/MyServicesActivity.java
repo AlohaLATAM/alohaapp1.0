@@ -56,6 +56,7 @@ public class MyServicesActivity extends AppCompatActivity {
         servicesListFragment = new ServicesListFragment();
 
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
     private void onInit() {
