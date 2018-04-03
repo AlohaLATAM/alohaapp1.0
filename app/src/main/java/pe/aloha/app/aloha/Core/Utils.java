@@ -7,7 +7,15 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
+import android.util.Log;
 import android.widget.Toast;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import pe.aloha.app.aloha.R;
 
@@ -44,5 +52,39 @@ public class Utils {
 
         intent.setData(Uri.parse(whastappLink));
         context.startActivity(intent);
+    }
+
+    public static String convertDate(String myDate) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        Date newDate = null;
+
+        Log.e("Here", myDate);
+
+        try {
+            newDate = format.parse(myDate);
+        } catch (ParseException e) {
+            return "No hay fecha.";
+        }
+        format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date = format.format(newDate);
+
+
+        format .setTimeZone(TimeZone.getTimeZone("UTC"));
+        Date parsed = null; // => Date is in UTC now
+        try {
+            parsed = format .parse(date);
+        } catch (ParseException e) {
+            return "No parseable.";
+        }
+
+        TimeZone tz = TimeZone.getTimeZone("America/Lima");
+        Locale esLocale = new Locale("es", "ES");
+        SimpleDateFormat destFormat = new SimpleDateFormat("EEEE d ' de ' MMMM ', ' hh:mm aa", esLocale);
+        destFormat.setTimeZone(tz);
+
+        date = destFormat.format(parsed);
+        Log.e("date",date);
+
+        return date;
     }
 }
