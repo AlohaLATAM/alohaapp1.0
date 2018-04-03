@@ -23,6 +23,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import com.google.firebase.messaging.FirebaseMessaging;
+
 public class ListServicesActivity extends AppCompatActivity {
 
     static ListServicesActivity listServicesActivity;
@@ -39,6 +41,8 @@ public class ListServicesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_services);
+
+        FirebaseMessaging.getInstance().subscribeToTopic("drivers_channel");
 
         initCast();
         onInit();

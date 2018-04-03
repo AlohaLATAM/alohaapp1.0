@@ -1,6 +1,7 @@
 package pe.aloha.app.aloha.Core;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -27,11 +28,9 @@ public class Utils {
     public static void makeCall(Context context) {
         Intent phoneIntent = new Intent(Intent.ACTION_CALL);
 
-        phoneIntent.setData(Uri.parse("tel:987928878"));
+        phoneIntent.setData(Uri.parse("tel:946585495"));
 
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-            createToast(context, R.string.something_wrong);
-
             return;
         }
 
@@ -40,7 +39,7 @@ public class Utils {
     }
 
     public static void openWhatsapp(Context context) {
-        String whastappLink = "https://api.whatsapp.com/send?phone=51987928878";
+        String whastappLink = "https://api.whatsapp.com/send?phone=51946585495";
         Intent intent = new Intent(Intent.ACTION_VIEW);
 
         intent.setData(Uri.parse(whastappLink));
