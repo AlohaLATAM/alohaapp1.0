@@ -48,6 +48,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/date"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     tools:layout_editor_absoluteY="10dp" />
 
@@ -77,6 +78,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="@string/type_home"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/quotation_from" />
 
@@ -106,6 +108,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="@string/from"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/quotation_date" />
 
@@ -115,6 +118,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="@string/type_home"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/quotation_to" />
 
@@ -124,6 +128,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="@string/to"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/quotation_from_type_home" />
 
@@ -141,9 +146,10 @@
                     android:id="@+id/quotation_label_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
                     android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
                     android:text="@string/price"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     tools:layout_editor_absoluteY="0dp" />
 
@@ -175,6 +181,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:text="@string/inventory"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -209,9 +216,10 @@
                     android:id="@+id/quotation_label_map"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
                     android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
                     android:text="@string/map"
+                    android:textStyle="bold"
                     app:layout_constraintBaseline_toBaselineOf="@+id/button"
                     app:layout_constraintStart_toStartOf="parent" />
 

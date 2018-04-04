@@ -12,10 +12,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:text="@string/date"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/view" />
 
     <TextView
         android:id="@+id/quotation_value_date"
@@ -35,6 +36,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/from"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quotation_value_date" />
 
@@ -56,6 +58,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/to"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quotation_value_from" />
 
@@ -80,6 +83,16 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view"
         tools:text="80" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="15dp"></View>
+
 </android.support.constraint.ConstraintLayout>
