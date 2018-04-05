@@ -52,7 +52,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(this, channelId)
                         .setSmallIcon(R.drawable.logo)
-                        .setContentTitle("Aloha,")
+                        .setContentTitle("¡Aloha!")
                         .setContentText(messageBody)
                         .setAutoCancel(true)
                         // .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 })
