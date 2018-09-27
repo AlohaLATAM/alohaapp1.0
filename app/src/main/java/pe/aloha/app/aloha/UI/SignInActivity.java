@@ -65,7 +65,9 @@ public class SignInActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<UserResponse> call, Throwable t) {}
+            public void onFailure(Call<UserResponse> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Error: Ocurrió un problema, intenta comunicarte con nosotros.", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
